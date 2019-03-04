@@ -13,17 +13,16 @@ def base_grid(size_x=8):
     sigma_y = 1.0
     sigma_x = 1.0
 
-    # oct_1 = np.random.rand(size_x, size_x)
-    oct_1 = np.random.rand(size_x, size_x) - 0.5
+    # level_1 = np.random.rand(size_x, size_x)
+    level_1 = np.random.rand(size_x, size_x) - 0.5
 
     # Apply gaussian filter
     sigma = [sigma_y, sigma_x]
-    y = sp.ndimage.filters.gaussian_filter(oct_1, sigma, mode='nearest')
+    y = sp.ndimage.filters.gaussian_filter(level_1, sigma, mode='nearest')
     # plt.imshow(y)
 
-    oct_2 = np.random.rand(size_x * 2, size_x * 2) * 0.5 - 0.25
+    level_2 = np.random.rand(size_x * 2, size_x * 2) * 0.5 - 0.25
 
-    oct_3 = np.random.rand(size_x * 4, size_x * 4) * 0.25 - 0.125
+    level_3 = np.random.rand(size_x * 4, size_x * 4) * 0.25 - 0.125
 
-    return oct_1, oct_2, oct_3
-
+    return level_1, level_2, level_3
