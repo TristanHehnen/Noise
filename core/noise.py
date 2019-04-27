@@ -1,8 +1,11 @@
+import scipy.ndimage
+
 import scipy as sp
 import numpy as np
 import matplotlib.pyplot as plt
+
 from scipy import interpolate
-import scipy.ndimage
+from scipy.spatial import Voronoi
 
 
 def base_grid(size_x=8):
@@ -26,3 +29,12 @@ def base_grid(size_x=8):
     level_3 = np.random.rand(size_x * 4, size_x * 4) * 0.25 - 0.125
 
     return level_1, level_2, level_3
+
+
+def voronoi_grid(n_points=10, size_x=8):
+    # Random distribution of desired number of points.
+    points = np.random.rand(n_points,2)
+    voronoi = Voronoi(points)
+    
+    regions, vertices = voronoi_finite_polygons_2d(voronoi)
+    return regions, vertices
